@@ -1,0 +1,24 @@
+name: Daily Concordia Check
+
+on:
+  schedule:
+    - cron: "0 8 * * *"  # Runs daily at 8:00 UTC (~1:30 PM IST)
+  workflow_dispatch:
+
+jobs:
+  check-and-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Run check
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python check_site.py
