@@ -1,11 +1,16 @@
-import os
 import smtplib
 import requests
 from bs4 import BeautifulSoup
 from email.message import EmailMessage
 
+# ----------- Configuration Section -----------
 URL = "https://www.concordia.ca/hr/jobs/openings/exam-invigilation.html"
 TARGET_TEXT = "fall 2025"
+
+EMAIL_USER = "akashrockstar1997@gmail.com"         # Your Gmail address
+EMAIL_PASS = "dimhptvkgnnkgrsl"     # Gmail App Password
+RECEIVER_EMAIL = "nixonakash01@example.com"   # Where the alert should go
+# --------------------------------------------
 
 def check_website():
     try:
@@ -20,19 +25,19 @@ def check_website():
 def send_email(subject, body):
     msg = EmailMessage()
     msg['Subject'] = subject
-    msg['From'] = os.environ["EMAIL_USER"]
-    msg['To'] = os.environ["RECEIVER_EMAIL"]
+    msg['From'] = EMAIL_USER
+    msg['To'] = RECEIVER_EMAIL
     msg.set_content(body)
 
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(os.environ["EMAIL_USER"], os.environ["EMAIL_PASS"])
+        smtp.login(EMAIL_USER, EMAIL_PASS)
         smtp.send_message(msg)
 
 if check_website():
     print("✅ 'fall 2025' FOUND — sending email...")
     send_email(
         subject="✅ 'fall 2025' Found on Concordia Invigilation Page!",
-        body=f"Visit the site: {URL}"
+        body=f"The phrase was found! Check here: {URL}"
     )
 else:
     print("❌ Not found today.")
