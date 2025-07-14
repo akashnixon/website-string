@@ -5,7 +5,7 @@ from email.message import EmailMessage
 
 # ----------- Configuration Section -----------
 URL = "https://www.concordia.ca/hr/jobs/openings/exam-invigilation.html"
-TARGET_TEXT = "fall 2025"
+TARGET_TEXT = "winter 2025"
 
 EMAIL_USER = "akashrockstar1997@gmail.com"         # Your Gmail address
 EMAIL_PASS = "dimhptvkgnnkgrsl"     # Gmail App Password
