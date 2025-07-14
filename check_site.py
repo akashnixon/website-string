@@ -5,11 +5,11 @@ from email.message import EmailMessage
 
 # ----------- Configuration Section -----------
 URL = "https://www.concordia.ca/hr/jobs/openings/exam-invigilation.html"
-TARGET_TEXT = "winter 2025"
+TARGET_TEXT = "fall 2025"
 
 EMAIL_USER = "akashrockstar1997@gmail.com"         # Your Gmail address
 EMAIL_PASS = "dimhptvkgnnkgrsl"     # Gmail App Password
-RECEIVER_EMAIL = "nixonakash01@example.com"   # Where the alert should go
+RECEIVER_EMAIL = "nixonakash01@gmail.com"   # Where the alert should go
 # --------------------------------------------
 
 def check_website():
